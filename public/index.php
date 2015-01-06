@@ -1,4 +1,6 @@
 <?php
+namespace Universe;
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -47,3 +49,29 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 */
 
 $app->run();
+
+include 'Australia/Person.php';
+include 'Indonesia/Person.php';
+include 'zombie.php';
+include 'anotherUniverse.php';
+
+//tono, orang Indonesia
+$tono = new \Indonesia\Person;
+$tono->talk();
+
+echo '<br />';
+
+//alex, orang Australia
+$alex = new \Australia\Person;
+$alex->talk();
+
+echo '<br />';
+
+//zombie, tidak tahu harus masuk ke namespace apa
+$zombie = new \Person;
+$zombie->talk();
+
+echo '<br />';
+
+$alien = new Person; // perhatikan, tanpa backslash didepan
+$alien->talk();

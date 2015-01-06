@@ -29,40 +29,11 @@ Route::get('/sk/get',function(){
 	return SukuCadang::all();
 });
 
-Route::get('/register', function()
-{
-    return View::make('register');
-});
+Route::get('/register', ['uses'=>'RegistrasiController@formregist']);
+Route::post('/register', ['uses'=>'RegistrasiController@validasi']);
 
-Route::post('/register', function()
-{
-    var_dump($_POST);
-});
+Route::get('blade-sample', function(){
 
-Route::post('/register', function()
-{    
-	 $validator = Validator::make(
-        Input::all(),
-        array(
-            "email"                 => "required|email|unique:users,email",
-            "password"              => "required|min:6",
-            "password_confirmation" => "same:password",
-        )
-    );
-	if($validator->passes())
-    {
-   		$user = new User;
-    	$user->email    = Input::get('email');
-    	$user->password = Hash::make(Input::get('password'));
-    	$user->save();
-
-    	return Redirect::to("register")->with('register_success', 'Selamat, Anda telah resmi menjadi pengangguran, silakan cek email untuk aktivasi :P');
-	}
-	else
-	{
-		 return Redirect::to('register')
-            ->withErrors($validator)
-            ->withInput();
-	}
+    return View::make('blade-sample');
 
 });
