@@ -37,3 +37,18 @@ Route::get('blade-sample', function(){
     return View::make('blade-sample');
 
 });
+
+Route::get('test', function()
+{
+	$user = new User2;
+	$user->email = "isa@test.com";
+	$user->real_name = "Muhammad Isa";
+	$user->password = "isa";
+	$user->save();
+	return "The test user has been saved to the database.";
+});
+
+Route::get('/user2',['uses'=>'User2Controller@action_index']);
+
+Route::get('/user2/create',['uses'=>'User2Controller@get_create']);
+Route::post('/user2/create',['uses'=>'User2Controller@post_create']);

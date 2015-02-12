@@ -50,6 +50,7 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 
 $app->run();
 
+/*
 include 'Australia/Person.php';
 include 'Indonesia/Person.php';
 include 'zombie.php';
@@ -75,3 +76,4 @@ echo '<br />';
 
 $alien = new Person; // perhatikan, tanpa backslash didepan
 $alien->talk();
+*/
